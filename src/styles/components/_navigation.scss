@@ -1,0 +1,37 @@
+.navContainer {
+    display: flex;
+    justify-content: center;
+    border-bottom: solid 2px black;
+    padding: 1em;
+
+    img {
+        height: 80px;
+    }
+
+    &__brand {
+        display: flex;
+        &-name {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-left: 1em;
+        }
+    }
+    nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 10vh;
+
+        a {
+            margin-right: 1em;
+            color: black;
+            text-decoration: none;
+            &:hover{
+                color: blue;
+                text-decoration: underline;
+            }
+        }
+    }
+}

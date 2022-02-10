@@ -1,0 +1,13 @@
+.logContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 500px;
+        gap:20px
+    }
+}

@@ -1,0 +1,26 @@
+// Temps de chargement du loading spinner
+$Loading-time: 3000ms;
+
+// Ici, modification des breakpoints pour les Media queries
+$breakpoints: (
+  mobile: 576px,
+  tablets: 992px,
+  computer: 1200px,
+);
+
+// Couleurs du site
+
+$color-primary: #9356dc;
+$color-secondary: #ff79da;
+$color-third: #99e2d0;
+//backgrounds
+$bkg-dark: #eeeeee;
+$bkg-light: #f8f8f8;
+
+
+//Shadow-color
+$color-shadow: grey;
+
+
+
+
