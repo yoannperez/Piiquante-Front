@@ -2,17 +2,13 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 const Signup = () => {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm();
-    const onSubmit = (data) => console.log(data);
-    console.log(errors);
+    const {register, handleSubmit, formState: { errors },} = useForm();
+    // console.log(errors);
+    
 
     const signup = async (data, e) => {
         e.preventDefault();
-        await fetch("http://localhost:3000/api/auth/signup", {
+        await fetch( process.env.REACT_APP_API_ADRESS + "/api/auth/signup", {
             method: "POST",
             headers: {
                 "Content-type": "application/json",

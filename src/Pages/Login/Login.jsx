@@ -1,18 +1,17 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { UserContext } from "../../utils/context/context";
 
 const Login = () => {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm();
+    const {register, handleSubmit, formState: { errors }, } = useForm();
+    const {refresh, setRefresh } = useContext(UserContext);
 
     console.log(errors);
 
     const login = async (data, e) => {
         e.preventDefault();
-        await fetch("http://localhost:3000/api/auth/login", {
+        await fetch(process.env.REACT_APP_API_ADRESS + "/api/auth/login", {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
@@ -22,14 +21,13 @@ const Login = () => {
             .then((res) => res.json())
             .then(async (res) => {
                 const resData = await res;
-                console.log(resData);
-                if (resData.status === "success") {
-                    //   setMailAdress(getValues('email'));
-                    // alert("Message Sent");
-                } else if (resData.status === "fail") {
-                    console.log("Message failed to send");
-                    // alert("Message failed to send");
-                }
+                console.log("res data",resData);
+                if (resData.token) {
+                    localStorage.setItem("PiiquanteUser", JSON.stringify(resData));
+                    setRefresh(!refresh)
+
+                  }
+                
             });
     };
 
