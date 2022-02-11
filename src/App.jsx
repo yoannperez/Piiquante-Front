@@ -12,9 +12,11 @@ function App() {
     const { user, setUser, refresh } = useContext(UserContext);
 
     useEffect(() => {
-        setUser(localStorage.getItem("PiiquanteUser"));
+        setUser(JSON.parse(localStorage.getItem("PiiquanteUser")));
+        // setUser(localStorage.getItem("PiiquanteUser"));
+        // console.log(user);
         // eslint-disable-next-line
-    }, [user, refresh]);
+    }, [refresh]);
 
     return (
         <>
