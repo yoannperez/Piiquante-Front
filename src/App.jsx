@@ -5,6 +5,7 @@ import Error from "./Pages/Error";
 import Login from "./Pages/Login";
 import Signup from "./Pages/SignUp";
 import Sauces from "./Pages/Sauces";
+import Sauce from "./Pages/SingleSauce";
 import { useEffect, useContext } from "react";
 import { UserContext } from "./utils/context/context";
 
@@ -13,8 +14,6 @@ function App() {
 
     useEffect(() => {
         setUser(JSON.parse(localStorage.getItem("PiiquanteUser")));
-        // setUser(localStorage.getItem("PiiquanteUser"));
-        // console.log(user);
         // eslint-disable-next-line
     }, [refresh]);
 
@@ -24,6 +23,7 @@ function App() {
             {user ? (
                 <Routes>
                     <Route path="/" element={<Sauces />} />
+                    <Route path="/sauce/:id" element={<Sauce />} />
                     <Route path="*" element={<Error />} />
                 </Routes>
             ) : (

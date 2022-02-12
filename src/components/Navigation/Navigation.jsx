@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import flame from "../../assets/img/flame.png";
 import { useContext } from "react";
 import { UserContext } from "../../utils/context/context";
+import logout from '../../assets/img/log-out.svg'
 
 const Navigation = () => {
     const { user, refresh, setRefresh } = useContext(UserContext);
@@ -26,7 +27,7 @@ const Navigation = () => {
                     </div>
                     {user ? (
                         <nav>
-                            <div onClick={(e) => handleClick(e)}>LOGOUT</div>
+                            <img src={logout} alt="Se déconnecter" onClick={(e) => handleClick(e)} />  
                         </nav>
                     ) : (
                         <nav>

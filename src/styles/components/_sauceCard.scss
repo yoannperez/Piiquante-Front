@@ -1,0 +1,25 @@
+.cardContainer {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    border-radius: 5px;
+    align-items: center;
+    overflow: hidden;
+    padding: 1em;
+    
+    
+    &:hover{
+        transform: scale(1.02);
+        @include box-shadows;
+    }
+
+    img {
+        
+        width: 250px;
+        height: 100px;
+        object-fit:contain;
+        object-position: center;
+        overflow: hidden;
+    }
+    
+}

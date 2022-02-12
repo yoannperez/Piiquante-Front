@@ -1,0 +1,46 @@
+.singleSauce__Container {
+    margin: 2em auto;
+
+    max-width: 600px;
+    display: flex;
+    .right {
+        margin-left: 2em;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 1em;
+    }
+    img {
+        max-width: 300px;
+        max-height: 300px;
+    }
+}
+
+.like {
+    color: green;
+}
+
+.disLike {
+    color: red;
+}
+
+.btn {
+    padding: 0.1em 0.5em;
+    cursor: pointer;
+    box-shadow: 0 1px 2px black;
+    margin-right: 1em;
+    border:none;
+    &:hover{
+        transform: scale(1.1);
+        transition: transform ease 100ms;
+    }
+}
+.btn-delete {
+    background-color: red;
+    color: white;
+}
+
+.btn-modify {
+    background-color: rgb(169, 15, 180);
+    color: white;
+}

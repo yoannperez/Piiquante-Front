@@ -1,7 +1,12 @@
 @import "./base/base";
 @import "./base/typography";
+@import "./utils/variables";
+@import "./utils/mixins";
 @import "./components/navigation";
+@import "./components/sauceCard";
 @import "./utils/loader";
-@import './pages/login'
+@import './pages/login';
+@import './pages/sauces';
+@import './pages/singleSauce';
 
 

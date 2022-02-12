@@ -1,6 +1,6 @@
 .navContainer {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     border-bottom: solid 2px black;
     padding: 1em;
 
@@ -9,7 +9,9 @@
     }
 
     &__brand {
+        min-width: 400px;
         display: flex;
+        
         &-name {
             display: flex;
             flex-direction: column;
@@ -20,9 +22,16 @@
     }
     nav {
         display: flex;
+        
         justify-content: center;
         align-items: center;
         margin-left: 10vh;
+       float: right;
+        
+
+        img {
+            width: 40px;
+        }
 
         a {
             margin-right: 1em;
