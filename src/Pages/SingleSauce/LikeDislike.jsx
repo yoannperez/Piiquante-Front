@@ -20,38 +20,47 @@ const LikeDislike = (id) => {
     myHeaders.append("Authorization", "BEARER " + user.token);
 
     useEffect(() => {
-        const EffectHeader = myHeaders;
-
         setSpinner(true);
-        function userId(userid) {
-            return userid === user.userId;
-        }
+        if (user && id) {
+            const EffectHeader = myHeaders;
 
-        async function fetchData() {
-            try {
-                const response = await fetch(process.env.REACT_APP_API_ADRESS + "/api/sauces/" + id.id, {
-                    method: "GET",
-                    headers: EffectHeader,
-                });
-                const data = await response.json();
-                setDatas(data);
-                if (data.usersLiked.find(userId)) {
-                    setLike(1);
-                } else if (data.usersDisliked.find(userId)) {
-                    setLike(-1);
-                } else {
-                    setLike(0);
-                }
-            } catch (err) {
-                console.log(err);
-                // setError(true);
-            } finally {
+
+
+            function userId(userid) {
+                // Function for finding in Array
+                return userid === user.userId;
             }
+            async function fetchData() {
+                try {
+                    const response = await fetch(process.env.REACT_APP_API_ADRESS + "/api/sauces/" + id.id, {
+                        method: "GET",
+                        headers: EffectHeader,
+                      
+                    });
+                    const data = await response.json();
+                    setDatas(data);
+                    if (data.usersLiked.find(userId)) {
+                        setLike(1);
+                    } else if (data.usersDisliked.find(userId)) {
+                        setLike(-1);
+                    } else {
+                        setLike(0);
+                    }
+                    
+                } catch (err) {
+                    console.log(err);
+                    // setError(true);
+                } finally {
+                    setSpinner(false);
+                }
+            }
+            fetchData();
         }
-
-        fetchData();
-        setSpinner(false);
-    }, [refresh]);
+        return () => {
+            setSpinner(false);
+          };
+          // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [id.id, refresh]);
 
     useEffect(() => {
         const EffectHeader = myHeaders;
@@ -111,13 +120,13 @@ const LikeDislike = (id) => {
                     <div className="Loader" style={{ marginTop: "0" }}></div>
                 ) : (
                     <div>
-                        <button className={like === 1 ? "like" : null} onClick={(e) => handleLike(e)} disabled={like === -1}>
-                            <AiOutlineLike />
+                        <button  className={`likeComponent + ${(like === 1)? "like" : ""}`} onClick={(e) => handleLike(e)} disabled={like === -1}>
+                            <AiOutlineLike size={30}/>
                         </button>
                         <span>{datas.likes}</span>
 
-                        <button className={like === -1 ? "disLike" : null} onClick={(e) => handleDisLike(e)} disabled={like === 1}>
-                            <AiOutlineDislike />
+                        <button className={`likeComponent + ${(like === -1) ? "disLike" : ""}`} onClick={(e) => handleDisLike(e)} disabled={like === 1}>
+                            <AiOutlineDislike size={30}/>
                         </button>
 
                         {datas.dislikes}
