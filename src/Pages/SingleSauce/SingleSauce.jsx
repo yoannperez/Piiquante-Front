@@ -12,8 +12,6 @@ const SingleSauce = () => {
     const [spinner, setSpinner] = useState(false);
 
     useEffect(() => {
-        // const user = JSON.parse(localStorage.getItem("PiiquanteUser"))
-        // if (!user) return;
         setSpinner(true);
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
@@ -51,6 +49,11 @@ const SingleSauce = () => {
         e.preventDefault();
     }
 
+    console.log('====================================');
+    console.log("sauce : ", sauce.userId);
+    console.log("user : ", user.userId);
+    console.log(sauce.userId === user.userId);
+    console.log('====================================');
     return (
         <>
             {spinner ? (
@@ -74,12 +77,17 @@ const SingleSauce = () => {
                             <button className="btn" onClick={(e) => handleBack(e)}>
                                 BACK
                             </button>
+                            {sauce.userId === user.userId ? 
+                            <div>
                             <button className="btn btn-modify" onClick={(e) => handleModify(e)}>
                                 MODIFY
                             </button>
                             <button className="btn btn-delete" onClick={(e) => handleDelete(e)}>
                                 DELETE
                             </button>
+                            </div>
+                            :
+                            null }
                         </div>
                     </div>
                 </div>
