@@ -18,7 +18,7 @@ const Signup = () => {
             .then((res) => res.json())
             .then(async (res) => {
                 const resData = await res;
-                console.log(resData);
+               
                 if (resData.status === "success") {
                     //   setMailAdress(getValues('email'));
                     // alert("Message Sent");

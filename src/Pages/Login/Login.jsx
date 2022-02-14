@@ -11,7 +11,6 @@ const Login = () => {
     } = useForm();
     const { refresh, setRefresh } = useContext(UserContext);
 
-    console.log(errors);
 
     const login = async (data, e) => {
         e.preventDefault();
