@@ -1,22 +1,27 @@
 import React from "react";
-import { Link, useNavigate,useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import flame from "../../assets/img/flame.png";
 import { useContext } from "react";
 import { UserContext } from "../../utils/context/context";
-import logout from '../../assets/img/log-out.svg'
+import logout from "../../assets/img/log-out.svg";
+import grid from "../../assets/img/grid.svg";
+import add from "../../assets/img/add.svg";
 
 const Navigation = () => {
-
-    const location = useLocation()
+    const location = useLocation();
 
     const { user, refresh, setRefresh } = useContext(UserContext);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const handleClick = (e) => {
         e.preventDefault();
         localStorage.removeItem("PiiquanteUser");
-        navigate('/')
+        navigate("/");
         setRefresh(!refresh);
+    };
+    const handleGrid = (e) => {
+        e.preventDefault();
+        navigate("/");
     };
 
     return (
@@ -32,16 +37,21 @@ const Navigation = () => {
                     </div>
                     {user ? (
                         <nav>
-                            <img src={logout} alt="Se déconnecter" onClick={(e) => handleClick(e)} />  
+                            {location.pathname !== "/" ? <img src={grid} alt="" title="Retour à la liste" onClick={(e) => handleGrid(e)} /> : null}
+                            {location.pathname === "/" ? <img src={add} alt="" title="Ajouter une sauce" /> : null}
+                            <img src={logout} alt="" title="Se déconnecter" onClick={(e) => handleClick(e)} />
                         </nav>
                     ) : (
                         <nav>
-                            {location.pathname === '/register' ? 
-                            <Link to="/" title="Se connecter">Connexion</Link>
-                            :
-                            <Link to="/register" title="S'enregistrer">S'enregistrer</Link> 
-                            }
-                            
+                            {location.pathname === "/register" ? (
+                                <Link to="/" title="Se connecter">
+                                    Connexion
+                                </Link>
+                            ) : (
+                                <Link to="/register" title="S'enregistrer">
+                                    S'enregistrer
+                                </Link>
+                            )}
                         </nav>
                     )}
                 </div>

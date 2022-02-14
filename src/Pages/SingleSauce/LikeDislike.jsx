@@ -2,22 +2,20 @@ import React, { useEffect, useState, useRef } from "react";
 import { useContext } from "react";
 import { UserContext } from "../../utils/context/context";
 import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
-import { useFetch } from "../../utils/hooks/index";
+import { useGetFetch } from "../../utils/hooks/index";
 
 const LikeDislike = (id) => {
     const { user } = useContext(UserContext);
-    // const [datas, setDatas] = useState();
-
+    const [update, setUpdate] = useState(false)
     const [like, setLike] = useState(0);
-
-    const [spinner, setSpinner] = useState(false);
-    // const [refresh, setRefresh] = useState(false);
     const [sendApi, setSendApi] = useState(false);
+    
 
-    const { data, isLoading, error } = useFetch(process.env.REACT_APP_API_ADRESS + "/api/sauces/" + id.id);
+
+    const { data, isLoading, error } = useGetFetch(process.env.REACT_APP_API_ADRESS + "/api/sauces/" + id.id, update);
 
     useEffect(() => {
-        if (Object.keys(data).length != 0) {
+        if (Object.keys(data).length !== 0) {
         function userId(userid) {
             return userid === user.userId;
         }
@@ -34,39 +32,41 @@ const LikeDislike = (id) => {
 
     const firstUpdate = useRef(true);
 
-    // useEffect(() => {
-    //     const EffectHeader = myHeaders;
+    const myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Authorization", "BEARER " + user.token);
+    useEffect(() => {
+        const EffectHeader = myHeaders;
 
-    //     if (firstUpdate.current) {
-    //         firstUpdate.current = false;
-    //         return;
-    //     }
+        if (firstUpdate.current) {
+            firstUpdate.current = false;
+            return;
+        }
 
-    //     setSpinner(true);
-    //     let toSend = {
-    //         userId: user.userId,
-    //         like: like,
-    //     };
-    //     async function fetchLike() {
-    //         try {
-    //             await fetch(process.env.REACT_APP_API_ADRESS + "/api/sauces/" + id.id + "/like", {
-    //                 method: "POST",
-    //                 headers: EffectHeader,
-    //                 body: JSON.stringify(toSend),
-    //             });
-    //         } catch (err) {
-    //             console.log(err);
-    //             // setError(true);
-    //         } finally {
-    //             setRefresh(!refresh);
-    //         }
-    //     }
-    //     fetchLike();
-    // }, [sendApi]);
+        let toSend = {
+            userId: user.userId,
+            like: like,
+        };
+        async function fetchLike() {
+            try {
+                await fetch(process.env.REACT_APP_API_ADRESS + "/api/sauces/" + id.id + "/like", {
+                    method: "POST",
+                    headers: EffectHeader,
+                    body: JSON.stringify(toSend),
+                });
+            } catch (err) {
+                console.log(err);
+                // setError(true);
+            } finally {
+                setUpdate(!update)
+            }
+        }
+        fetchLike();
+    }, [sendApi]);
 
     function handleLike(e) {
         e.preventDefault();
-
+        
         if (like === 0) {
             setLike(1);
         } else {

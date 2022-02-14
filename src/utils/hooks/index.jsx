@@ -1,7 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../utils/context/context";
 
-export function useFetch(url) {
+
+
+
+export function useGetFetch(url, update) {
     const [data, setData] = useState({});
     const [isLoading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -33,19 +36,7 @@ export function useFetch(url) {
         }
         fetchData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [url]);
+    }, [url, update]);
     return { isLoading, data, error };
 }
 
-// async function fetchData() {
-//   try {
-//     const response = await fetch(url)
-//     const data = await response.json()
-//     setData(data)
-//   } catch (err) {
-//     console.log(err)
-//     setError(true)
-//   } finally {
-//     setLoading(false)
-//   }
-// }
