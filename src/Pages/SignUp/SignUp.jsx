@@ -26,7 +26,12 @@ const Signup = () => {
                     console.log("Message failed to send");
                     // alert("Message failed to send");
                 }
-            });
+            })
+            .catch(function (err) {
+                window.alert(
+                  "Erreur de connection réseau (API Down), nous n'avons pas pu communiquer avec le serveur. Veuillez vérifier votre configuration."
+                );
+              });
     };
     
     return (

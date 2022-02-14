@@ -3,10 +3,13 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { UserContext } from "../../utils/context/context";
 
-
 const Login = () => {
-    const {register, handleSubmit, formState: { errors }, } = useForm();
-    const {refresh, setRefresh } = useContext(UserContext);
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
+    const { refresh, setRefresh } = useContext(UserContext);
 
     console.log(errors);
 
@@ -19,17 +22,19 @@ const Login = () => {
             },
             body: JSON.stringify(data),
         })
-            .then((res) => res.json())
-            .then(async (res) => {
+            .then((res, err) => res.json())
+            .then(async (res, err) => {
                 const resData = await res;
-                console.log("res data",resData);
                 if (resData.token) {
                     localStorage.setItem("PiiquanteUser", JSON.stringify(resData));
-                    setRefresh(!refresh)
-
-                  }
-                
-            });
+                    setRefresh(!refresh);
+                }
+            })
+            .catch(function (err) {
+                window.alert(
+                  "Erreur de connection réseau (API Down), nous n'avons pas pu communiquer avec le serveur. Veuillez vérifier votre configuration."
+                );
+              });
     };
 
     return (

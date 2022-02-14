@@ -1,16 +1,21 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate,useLocation } from "react-router-dom";
 import flame from "../../assets/img/flame.png";
 import { useContext } from "react";
 import { UserContext } from "../../utils/context/context";
 import logout from '../../assets/img/log-out.svg'
 
 const Navigation = () => {
+
+    const location = useLocation()
+
     const { user, refresh, setRefresh } = useContext(UserContext);
+    const navigate = useNavigate()
 
     const handleClick = (e) => {
         e.preventDefault();
         localStorage.removeItem("PiiquanteUser");
+        navigate('/')
         setRefresh(!refresh);
     };
 
@@ -31,8 +36,12 @@ const Navigation = () => {
                         </nav>
                     ) : (
                         <nav>
-                            <Link to="/register">SIGN UP</Link>
+                            {location.pathname === '/register' ? 
                             <Link to="/">LOGIN</Link>
+                            :
+                            <Link to="/register">SIGN UP</Link> 
+                            }
+                            
                         </nav>
                     )}
                 </div>
