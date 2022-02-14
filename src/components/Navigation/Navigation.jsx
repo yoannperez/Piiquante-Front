@@ -23,6 +23,11 @@ const Navigation = () => {
         e.preventDefault();
         navigate("/");
     };
+    
+    const handleAddSauce = (e) => {
+        e.preventDefault();
+        navigate("/add-sauce");
+    };
 
     return (
         <>
@@ -38,7 +43,7 @@ const Navigation = () => {
                     {user ? (
                         <nav>
                             {location.pathname !== "/" ? <img src={grid} alt="" title="Retour à la liste" onClick={(e) => handleGrid(e)} /> : null}
-                            {location.pathname === "/" ? <img src={add} alt="" title="Ajouter une sauce" /> : null}
+                            {location.pathname === "/" ? <img src={add} alt="" title="Ajouter une sauce" onClick={(e)=> handleAddSauce(e)}/> : null}
                             <img src={logout} alt="" title="Se déconnecter" onClick={(e) => handleClick(e)} />
                         </nav>
                     ) : (

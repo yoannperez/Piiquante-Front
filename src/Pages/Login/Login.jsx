@@ -9,7 +9,7 @@ const Login = () => {
         handleSubmit,
         formState: { errors },
     } = useForm();
-    const { refresh, setRefresh } = useContext(UserContext);
+    const {refresh, setRefresh } = useContext(UserContext);
     const [errorMsg, setErrorMsg] = useState()
 
 
@@ -45,9 +45,10 @@ const Login = () => {
         <div className="logContainer">
             <h1>Login</h1>
             <form onSubmit={handleSubmit(login)}>
-                <input type="text" placeholder="Email" {...register("email", { required: true, pattern: /^\S+@\S+$/i })} />
+                <input type="email" placeholder="Email" {...register("email", { required: true, pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i })} />
+                {errors.email && <span>Veuillez indiquer votre adresse e-mail</span>}
                 <input type="password" placeholder="Password" {...register("password", { required: true })} />
-
+                {errors.password && <span>Ce champ doit être rempli</span>}
                 <input type="submit" value="Se connecter" />
             </form>
             {errorMsg && (

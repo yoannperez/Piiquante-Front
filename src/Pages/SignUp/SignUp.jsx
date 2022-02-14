@@ -1,8 +1,11 @@
-import React from "react";
+import React,{useState} from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
     const {register, handleSubmit, formState: { errors },} = useForm();
+    const [errorMsg, setErrorMsg] = useState()
+    const navigate = useNavigate()
     // console.log(errors);
     
 
@@ -18,13 +21,11 @@ const Signup = () => {
             .then((res) => res.json())
             .then(async (res) => {
                 const resData = await res;
-               
-                if (resData.status === "success") {
-                    //   setMailAdress(getValues('email'));
-                    // alert("Message Sent");
-                } else if (resData.status === "fail") {
-                    console.log("Message failed to send");
-                    // alert("Message failed to send");
+                if (resData.error) {
+                    setErrorMsg(resData.error.message);
+                } else {
+                    setErrorMsg(resData.message + "Vous allez être redirigé vers la page de connexion dans 3s.");
+                    setTimeout(()=>  navigate('/'), 3000)
                 }
             })
             .catch(function (err) {
@@ -38,12 +39,22 @@ const Signup = () => {
         <div className='logContainer'>
             <h1>SignUp</h1>
             <form onSubmit={handleSubmit(signup)}>
-                <input type="text" placeholder="Email" {...register("email", { required: true, pattern: /^\S+@\S+$/i })} />
-                <input type="password" placeholder="Password" {...register("password", { required: true })} />
+                <input type="email" placeholder="Email" {...register("email", { required: true, pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i })} />
 
+                {errors.email && <span>Email non conforme (ex: nom@domain.fr)</span>}
+                <input type="password" placeholder="Password" {...register("password", { required: true })} />
+                {errors.password && <span>Ce champ est nécessaire</span>}
                 <input type="submit" value="Créer un compte"/>
             </form>
+            {errorMsg && (
+            <div className="form-group">
+              <div className="alert alert-danger" role="alert">
+                {errorMsg}
+              </div>
+            </div>
+          )}
         </div>
+        
     );
 };
 
