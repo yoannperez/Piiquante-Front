@@ -31,7 +31,6 @@ const LikeDislike = (id) => {
     }
     }, [data]);
 
-    console.log("like : ", like);
 
     const firstUpdate = useRef(true);
 

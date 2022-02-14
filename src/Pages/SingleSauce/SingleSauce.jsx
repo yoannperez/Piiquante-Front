@@ -49,11 +49,7 @@ const SingleSauce = () => {
         e.preventDefault();
     }
 
-    console.log('====================================');
-    console.log("sauce : ", sauce.userId);
-    console.log("user : ", user.userId);
-    console.log(sauce.userId === user.userId);
-    console.log('====================================');
+
     return (
         <>
             {spinner ? (

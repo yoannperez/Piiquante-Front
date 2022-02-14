@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useNavigate,useLocation } from "react-router-dom";
 import flame from "../../assets/img/flame.png";
 import { useContext } from "react";
@@ -37,9 +37,9 @@ const Navigation = () => {
                     ) : (
                         <nav>
                             {location.pathname === '/register' ? 
-                            <Link to="/">LOGIN</Link>
+                            <Link to="/" title="Se connecter">Connexion</Link>
                             :
-                            <Link to="/register">SIGN UP</Link> 
+                            <Link to="/register" title="S'enregistrer">S'enregistrer</Link> 
                             }
                             
                         </nav>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { UserContext } from "../../utils/context/context";
@@ -10,10 +10,12 @@ const Login = () => {
         formState: { errors },
     } = useForm();
     const { refresh, setRefresh } = useContext(UserContext);
+    const [errorMsg, setErrorMsg] = useState()
 
 
     const login = async (data, e) => {
         e.preventDefault();
+
         await fetch(process.env.REACT_APP_API_ADRESS + "/api/auth/login", {
             method: "POST",
             headers: {
@@ -28,6 +30,9 @@ const Login = () => {
                     localStorage.setItem("PiiquanteUser", JSON.stringify(resData));
                     setRefresh(!refresh);
                 }
+                
+                setErrorMsg(res.error);
+                
             })
             .catch(function (err) {
                 window.alert(
@@ -45,6 +50,13 @@ const Login = () => {
 
                 <input type="submit" value="Se connecter" />
             </form>
+            {errorMsg && (
+            <div className="form-group">
+              <div className="alert alert-danger" role="alert">
+                {errorMsg}
+              </div>
+            </div>
+          )}
         </div>
     );
 };
