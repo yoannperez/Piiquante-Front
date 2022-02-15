@@ -6,8 +6,16 @@
     // @import $box-shadows;
 
     div {
+        position: relative;
         display: flex;
         flex-direction: column;
+    }
+
+    .alerte {
+        position: absolute;
+        top: 20px;
+        right:10px;
+        color: red;
     }
 
     form {
@@ -19,6 +27,11 @@
         max-width: 500px;
         padding: 1em;
         margin: 2em auto;
+        line-height: 1.5em;
+
+        input, textarea {
+            padding: .5em;
+        }
     }
 
     .img__PlaceHolder {
