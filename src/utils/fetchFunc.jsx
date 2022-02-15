@@ -1,7 +1,5 @@
-
 export function postFetch(url, method, user, datas) {
     const { image, ...cleanData } = datas;
-    
 
     const myHeaders = new Headers();
     myHeaders.append("Authorization", `BEARER ${user.token}`);
@@ -10,10 +8,7 @@ export function postFetch(url, method, user, datas) {
     formData.append("sauce", JSON.stringify(cleanData));
     formData.append("image", datas.image[0]);
 
-   
-
     async function fetchData() {
-        var returnData = {};
         try {
             const response = await fetch(url, {
                 method: method,
@@ -21,17 +16,33 @@ export function postFetch(url, method, user, datas) {
                 body: formData,
             });
             const data = await response.json();
-            returnData = data;
+            return data;
         } catch (err) {
             console.log(err);
         } finally {
-            console.log('====================================');
-            console.log("rntData",returnData);
-            console.log('====================================');
-            return( returnData)
         }
     }
-    fetchData();
-  
+    return fetchData();
 }
 
+export function deleteFetch(url, method, user) {
+    const myHeaders = new Headers();
+    myHeaders.append("Authorization", `BEARER ${user.token}`);
+
+    async function fetchData() {
+        try {
+            const response = await fetch(url, {
+                method: method,
+                headers: myHeaders,
+            });
+            const data = await response.json();
+            console.log("rntData", data);
+            return data;
+        } catch (err) {
+            console.log(err);
+            alert("Erreur de communication avec le serveur.");
+        } finally {
+        }
+    }
+    return fetchData();
+}

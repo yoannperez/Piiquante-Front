@@ -1,16 +1,17 @@
 .navContainer {
+
     display: flex;
     justify-content: space-between;
     border-bottom: solid 2px black;
-    padding: 1em;
-    scrollbar-gutter: stable;
+    padding: 0.5em 0;
+
 
     img {
         height: 50px;
     }
 
     &__brand {
-        min-width: 400px;
+        min-width: 290px;
         display: flex;
 
         &-name {
@@ -18,12 +19,12 @@
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
-            padding-left: .5em;
+            padding-left: .2em;
         }
     }
     nav {
         display: flex;
-
+        scrollbar-gutter: stable;
         justify-content: center;
         align-items: center;
         margin-left: 10vh;

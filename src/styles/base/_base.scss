@@ -12,7 +12,7 @@ $orange-flame :#FFC600;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  scrollbar-gutter: stable;
+  
 }
 
 body {
@@ -29,6 +29,13 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+    scrollbar-gutter: stable;
 }
+
+html {
+  scrollbar-gutter: stable both-edges;
+}
+
+
 
 

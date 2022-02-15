@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { UserContext } from "../../utils/context/context";
 import LikeDislike from "./LikeDislike";
+import { deleteFetch} from "../../utils/fetchFunc";
 
 const SingleSauce = () => {
     const { id } = useParams();
@@ -45,10 +46,15 @@ const SingleSauce = () => {
     function handleModify(e) {
         e.preventDefault();
     }
-    function handleDelete(e) {
+    async function handleDelete(e) {
         e.preventDefault();
-    }
 
+        const url = process.env.REACT_APP_API_ADRESS + "/api/sauces/" + id;
+        if (window.confirm("Sûr de supprimer cette sauce ?")) {
+            await deleteFetch(url, "DELETE", user);
+            navigate("/");
+        }
+    }
 
     return (
         <>
@@ -73,17 +79,16 @@ const SingleSauce = () => {
                             <button className="btn" onClick={(e) => handleBack(e)}>
                                 BACK
                             </button>
-                            {sauce.userId === user.userId ? 
-                            <div>
-                            <button className="btn btn-modify" onClick={(e) => handleModify(e)}>
-                                MODIFY
-                            </button>
-                            <button className="btn btn-delete" onClick={(e) => handleDelete(e)}>
-                                DELETE
-                            </button>
-                            </div>
-                            :
-                            null }
+                            {sauce.userId === user.userId ? (
+                                <div>
+                                    <button className="btn btn-modify" onClick={(e) => handleModify(e)}>
+                                        MODIFY
+                                    </button>
+                                    <button className="btn btn-delete" onClick={(e) => handleDelete(e)}>
+                                        DELETE
+                                    </button>
+                                </div>
+                            ) : null}
                         </div>
                     </div>
                 </div>
