@@ -9,16 +9,19 @@ const AddSauce = () => {
     const { user } = useContext(UserContext);
     const url = process.env.REACT_APP_API_ADRESS + "/api/sauces/";
    
-console.log('====================================');
-console.log('url', url);
-console.log('====================================');
 
-    const onSubmit = (data) => {
+
+    // const onSubmit = (data) => {
+    async function onSubmit  (data)  {
         
         let toSend = {...data, userId:user.userId}
+        
         postFetch(url, "POST", user, toSend )
+    //    const rtnData = await PostFetch(url, "POST", user, toSend )
 
-
+    //    console.log('====================================');
+    //    console.log('rtnData', postFetch(url, "POST", user, toSend ));
+    //    console.log('====================================');
 
     }
 
