@@ -5,7 +5,8 @@
     border-radius: 5px;
     align-items: center;
     overflow: hidden;
-    padding: 1em;
+    padding: 0em 1em;
+    border: 1px solid $orange-flame;
     
     
     &:hover{
@@ -20,6 +21,7 @@
         object-fit:contain;
         object-position: center;
         overflow: hidden;
+        margin: .2em 1em;
     }
     
 }

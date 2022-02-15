@@ -34,10 +34,6 @@ const AddSauce = () => {
         navigate("/");
     }
 
-    console.log("====================================");
-    console.log(errors);
-    console.log("====================================");
-
     return (
         <div className="formContainer">
             <form onSubmit={handleSubmit(onSubmit)}>

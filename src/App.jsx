@@ -7,6 +7,7 @@ import Signup from "./Pages/SignUp";
 import Sauces from "./Pages/Sauces";
 import Sauce from "./Pages/SingleSauce";
 import AddSauce from "./Pages/AddSauce";
+import EditSauce from "./Pages/EditSauce";
 import { useEffect, useContext } from "react";
 import { UserContext } from "./utils/context/context";
 
@@ -25,6 +26,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Sauces />} />
                     <Route path="/sauce/:id" element={<Sauce />} />
+                    <Route path="/edit-sauce/:id" element={<EditSauce />} />
                     <Route path="/add-sauce" element={<AddSauce />} />
                     <Route path="*" element={<Error />} />
                 </Routes>

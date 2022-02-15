@@ -1,6 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import React, { useEffect, useState } from "react";
-import { useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { UserContext } from "../../utils/context/context";
 import LikeDislike from "./LikeDislike";
 import { deleteFetch} from "../../utils/fetchFunc";
@@ -45,6 +44,7 @@ const SingleSauce = () => {
     }
     function handleModify(e) {
         e.preventDefault();
+        navigate(`/edit-sauce/${id}`)
     }
     async function handleDelete(e) {
         e.preventDefault();

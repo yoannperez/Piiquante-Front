@@ -46,3 +46,22 @@ export function deleteFetch(url, method, user) {
     }
     return fetchData();
 }
+
+export function updateFetch(url, options) {
+
+   
+
+    async function fetchData() {
+        try {
+            const response = await fetch(url, options);
+            const data = await response.json();
+            console.log("rntData", data);
+            return data;
+        } catch (err) {
+            console.log(err);
+            alert("Erreur de communication avec le serveur.");
+        } finally {
+        }
+    }
+    return fetchData();
+}
