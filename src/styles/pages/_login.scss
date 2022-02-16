@@ -1,13 +1,51 @@
 .logContainer {
-    display: flex;
-    flex-direction: column;
+    // background-color: aqua;
     align-items: center;
+    height: 80vh;
+    justify-content: center;
 
+    h1 {
+        font-size: 48px;
+        text-align: center;
+        padding: 1em 0;
+    }
     form {
+        // background-color:aquamarine;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        max-width: 500px;
-        gap:20px
+        padding: 1em;
+        gap: 50px;
+    }
+
+    .inputFlex {
+        position: relative;
+        display: flex;
+        // background-color: coral;
+
+        input {
+            // background-color: rgb(0, 17, 255);
+            width: 90vw;
+            margin: 0 auto;
+            flex: auto;
+            padding: 0.5em 1em;
+            font-size: 24px;
+            border-radius: 10px;
+        }
+
+        span {
+            position: absolute;
+            top: 60px;
+            color: red;
+            font-size: 16px;
+        }
+    }
+
+    input[type="submit"] {
+        background-color: rgb(0, 17, 255);
+        padding: 0.5em 1em;
+        font-size: 24px;
+        border-radius: 10px;
+        width: min-content;
+        align-self: center;
     }
 }

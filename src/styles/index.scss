@@ -1,8 +1,9 @@
+@import "./utils/mixins";
+@import "./utils/queries";
 @import "./base/base";
 @import "./base/typography";
 @import "./components/formulaires";
 @import "./utils/variables";
-@import "./utils/mixins";
 @import "./components/navigation";
 @import "./components/sauceCard";
 @import "./utils/loader";

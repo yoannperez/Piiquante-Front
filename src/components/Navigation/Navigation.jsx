@@ -4,6 +4,8 @@ import flame from "../../assets/img/flame.png";
 import { useContext } from "react";
 import { UserContext } from "../../utils/context/context";
 import logout from "../../assets/img/log-out.svg";
+import login from "../../assets/img/log-in.svg";
+import addUser from "../../assets/img/add-user.svg";
 import grid from "../../assets/img/grid.svg";
 import add from "../../assets/img/add.svg";
 
@@ -50,11 +52,11 @@ const Navigation = () => {
                         <nav>
                             {location.pathname === "/register" ? (
                                 <Link to="/" title="Se connecter">
-                                    Connexion
+                                     <img src={login} alt="" title="Se connecter"/>
                                 </Link>
                             ) : (
                                 <Link to="/register" title="S'enregistrer">
-                                    S'enregistrer
+                                    <img src={addUser} alt="" title="Créer un compte"/>
                                 </Link>
                             )}
                         </nav>

@@ -1,14 +1,40 @@
+// Ici, modification des breakpoints pour les Media queries
+$breakpoints: (
+    small: 576px,
+    medium: 768px,
+    large: 992px,
+    extraLarge: 1200px,
+    extraExtraLarge: 1400px,
+);
+
 //Media queries
 
-@mixin tablets-only {
-    @media screen and (min-width: map-get($breakpoints, mobile)){
-        @content;
-    }
+@mixin adaptive-sm {
+  @media screen and (min-width: map-get($breakpoints, small)) {
+      @content;
   }
-  @mixin computers {
-    @media screen and (min-width: map-get($breakpoints, computer)) {
-        @content;
-    }
-  }
+}
 
-  // => retour home
+@mixin adaptive-md {
+  @media screen and (min-width: map-get($breakpoints, medium)) {
+      @content;
+  }
+}
+
+@mixin adaptive-lg {
+  @media screen and (min-width: map-get($breakpoints, large)) {
+      @content;
+  }
+}
+
+@mixin adaptive-xl {
+  @media screen and (min-width: map-get($breakpoints, extraLarge)) {
+      @content;
+  }
+}
+
+@mixin adaptive-xxl {
+  @media screen and (min-width: map-get($breakpoints, extraExtraLarge)) {
+      @content;
+  }
+}

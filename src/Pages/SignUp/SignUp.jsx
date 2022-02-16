@@ -1,17 +1,20 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
-    const {register, handleSubmit, formState: { errors },} = useForm();
-    const [errorMsg, setErrorMsg] = useState()
-    const navigate = useNavigate()
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
+    const [errorMsg, setErrorMsg] = useState();
+    const navigate = useNavigate();
     // console.log(errors);
-    
 
     const signup = async (data, e) => {
         e.preventDefault();
-        await fetch( process.env.REACT_APP_API_ADRESS + "/api/auth/signup", {
+        await fetch(process.env.REACT_APP_API_ADRESS + "/api/auth/signup", {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
@@ -25,36 +28,36 @@ const Signup = () => {
                     setErrorMsg(resData.error.message);
                 } else {
                     setErrorMsg(resData.message + "Vous allez être redirigé vers la page de connexion dans 3s.");
-                    setTimeout(()=>  navigate('/'), 3000)
+                    setTimeout(() => navigate("/"), 3000);
                 }
             })
             .catch(function (err) {
-                window.alert(
-                  "Erreur de connection réseau (API Down), nous n'avons pas pu communiquer avec le serveur. Veuillez vérifier votre configuration."
-                );
-              });
+                window.alert("Erreur de connection réseau (API Down), nous n'avons pas pu communiquer avec le serveur. Veuillez vérifier votre configuration.");
+            });
     };
-    
+
     return (
-        <div className='logContainer'>
+        <div className="logContainer">
             <h1>SignUp</h1>
             <form onSubmit={handleSubmit(signup)}>
-                <input type="email" placeholder="Email" {...register("email", { required: true, pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i })} />
-
-                {errors.email && <span>Email non conforme (ex: nom@domain.fr)</span>}
-                <input type="password" placeholder="Password" {...register("password", { required: true })} />
+                <div className="inputFlex">
+                    <input type="email" placeholder="Email" {...register("email", { required: true, pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i })} />
+                    {errors.email && <span>Email non conforme (ex: nom@domain.fr)</span>}
+                </div>
+                <div className="inputFlex">
+                <input type="password" placeholder="Password" autoComplete="on" {...register("password", { required: true })} />
                 {errors.password && <span>Ce champ est nécessaire</span>}
-                <input type="submit" value="Créer un compte"/>
+                </div>
+                <input type="submit" value="Créer un compte" />
             </form>
             {errorMsg && (
-            <div className="form-group">
-              <div className="alert alert-danger" role="alert">
-                {errorMsg}
-              </div>
-            </div>
-          )}
+                <div className="form-group">
+                    <div className="alert alert-danger" role="alert">
+                        {errorMsg}
+                    </div>
+                </div>
+            )}
         </div>
-        
     );
 };
 

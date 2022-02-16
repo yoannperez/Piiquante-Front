@@ -9,9 +9,8 @@ const Login = () => {
         handleSubmit,
         formState: { errors },
     } = useForm();
-    const {refresh, setRefresh } = useContext(UserContext);
-    const [errorMsg, setErrorMsg] = useState()
-
+    const { refresh, setRefresh } = useContext(UserContext);
+    const [errorMsg, setErrorMsg] = useState();
 
     const login = async (data, e) => {
         e.preventDefault();
@@ -30,34 +29,36 @@ const Login = () => {
                     localStorage.setItem("PiiquanteUser", JSON.stringify(resData));
                     setRefresh(!refresh);
                 }
-                
+
                 setErrorMsg(res.error);
-                
             })
             .catch(function (err) {
-                window.alert(
-                  "Erreur de connection réseau (API Down), nous n'avons pas pu communiquer avec le serveur. Veuillez vérifier votre configuration."
-                );
-              });
+                window.alert("Erreur de connection réseau (API Down), nous n'avons pas pu communiquer avec le serveur. Veuillez vérifier votre configuration.");
+            });
     };
 
     return (
         <div className="logContainer">
             <h1>Login</h1>
             <form onSubmit={handleSubmit(login)}>
-                <input type="email" placeholder="Email" {...register("email", { required: true, pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i })} />
-                {errors.email && <span>Veuillez indiquer votre adresse e-mail</span>}
-                <input type="password" placeholder="Password" {...register("password", { required: true })} />
-                {errors.password && <span>Ce champ doit être rempli</span>}
+                <div className="inputFlex">
+                    <input type="email" placeholder="Email" {...register("email", { required: true, pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i })} />
+                    {errors.email && <span>Veuillez indiquer votre adresse e-mail</span>}
+                </div>
+                <div className="inputFlex">
+                    <input type="password" placeholder="Password" autoComplete="on" {...register("password", { required: true })} />
+                    {errors.password && <span>Ce champ doit être rempli</span>}
+                </div>
+
                 <input type="submit" value="Se connecter" />
             </form>
             {errorMsg && (
-            <div className="form-group">
-              <div className="alert alert-danger" role="alert">
-                {errorMsg}
-              </div>
-            </div>
-          )}
+                <div className="form-group">
+                    <div className="alert alert-danger" role="alert">
+                        {errorMsg}
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

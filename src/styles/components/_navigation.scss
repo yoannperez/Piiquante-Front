@@ -1,18 +1,28 @@
 .navContainer {
-
+    // Global
+    // background-color: green;
     display: flex;
-    justify-content: space-between;
+    
+    flex-wrap: wrap;
     border-bottom: solid 2px black;
-    padding: 0.5em 0;
+    padding: 0.2em 0;
+    
+    @include adaptive-sm {
+        justify-content: space-between;
+        flex-wrap: nowrap;
+      }
 
-
+    // Flame
     img {
         height: 50px;
     }
-
+    // Title 
     &__brand {
-        min-width: 290px;
+        // background-color: blue;
+        width: 100%;
+        min-width: 280px;
         display: flex;
+        padding:0.3em 0;
 
         &-name {
             display: flex;
@@ -22,13 +32,23 @@
             padding-left: .2em;
         }
     }
+    //Navigation elements
     nav {
+        width: 100%;
         display: flex;
         scrollbar-gutter: stable;
         justify-content: center;
         align-items: center;
-        margin-left: 10vh;
+        border-top: solid 2px black;
+        // margin-left: 10vh;
+        padding-top: 0.3em;
         float: right;
+        // background-color: red;
+        @include adaptive-sm {
+            align-items: flex-end;
+            width: auto;
+            border-top: none;
+          }
 
         img {
             width: 40px;

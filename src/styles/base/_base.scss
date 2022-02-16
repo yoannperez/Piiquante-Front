@@ -24,6 +24,25 @@ body {
   -moz-osx-font-smoothing: grayscale;
  
   scrollbar-gutter: stable;
+
+  
+
+
+  @include adaptive-sm {
+    background-color: rgb(204, 204, 204);
+  }
+  @include adaptive-md {
+    background-color: rgb(163, 163, 163);
+  }
+  @include adaptive-lg {
+    background-color: rgb(107, 107, 107);
+  }
+  @include adaptive-xl {
+    background-color: rgb(60, 60, 60);
+  }
+  @include adaptive-xxl {
+    background-color: rgb(0, 0, 0);
+  }
 }
 
 code {
