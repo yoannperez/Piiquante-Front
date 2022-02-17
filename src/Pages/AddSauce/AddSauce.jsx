@@ -36,6 +36,7 @@ const AddSauce = () => {
 
     return (
         <div className="formContainer">
+            <h2>Ajouter une sauce</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <label htmlFor="name">Nom de la sauce</label>
@@ -49,7 +50,7 @@ const AddSauce = () => {
                 </div>
                 <div>
                     <label htmlFor="description">Description</label>
-                    <textarea id="description" placeholder="Description" {...register("description", { required: true, pattern: /[a-zA-Z0-9^.=:€]/i })} />
+                    <textarea id="description" rows="5" placeholder="Description" {...register("description", { required: true, pattern: /[a-zA-Z0-9^.=:€]/i })} />
                     {errors.description && <span className="alerte">Indiquer une description</span>}
                 </div>
 

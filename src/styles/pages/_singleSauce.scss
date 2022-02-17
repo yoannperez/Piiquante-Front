@@ -1,19 +1,51 @@
 .singleSauce__Container {
-    
-    margin: 2em auto;
-
-    max-width: 600px;
+    margin: 0.2em auto;
     display: flex;
+    flex-direction: column;
+    min-height: 80vh;
+    background-color: white;
+
+    @include adaptive-sm {
+        margin: 1em auto;
+        padding-top: .5em;
+        padding-bottom: .5em;
+    }
+
     .right {
-        margin-left: 2em;
+        padding: 0.5em 0.8em;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        gap: 1em;
+        gap: 0.5em;
+
+        @include adaptive-sm {
+            border-left:2px solid black
+        }
+    }
+    .left {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        // background-color: red;
+        @include adaptive-sm {
+            width: 60%;
+        }
     }
     img {
-        max-width: 300px;
+        max-width: 100%;
         max-height: 300px;
+        border: 2px solid black;
+        @include adaptive-sm {
+           margin-right: .5em;
+           margin-left: .5em;
+           max-width: 98%;
+        }
+    }
+
+    @include adaptive-sm {
+        flex-direction: row;
+        max-width: 600px;
     }
 }
 
@@ -30,11 +62,36 @@
     color: red;
 }
 
+.LikeDislike {
+    // background-color: red;
+    margin: 0em auto;
+    margin-top: 1em;
+}
+
+.SingleSauce__BTN {
+    // background-color: aqua;
+    display: flex;
+    margin: 1em auto;
+    gap: 5px;
+    @include adaptive-sm {
+        flex-direction: column;
+        
+    }
+
+    .modifyDelete {
+        display: flex;
+        gap: 5px;
+        @include adaptive-sm {
+            justify-content: space-around;
+            
+        }
+    }
+}
+
 .btn {
-    padding: 0.1em 0.5em;
+    padding: 0.5em 0.2em;
     cursor: pointer;
     box-shadow: 0 1px 2px black;
-    margin-right: 1em;
     border: none;
     &:hover {
         transform: scale(1.1);

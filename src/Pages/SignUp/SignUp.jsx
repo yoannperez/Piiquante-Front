@@ -52,7 +52,7 @@ const Signup = () => {
             </form>
             {errorMsg && (
                 <div className="form-group">
-                    <div className="alert alert-danger" role="alert">
+                    <div className="serverResponse" role="alert">
                         {errorMsg}
                     </div>
                 </div>

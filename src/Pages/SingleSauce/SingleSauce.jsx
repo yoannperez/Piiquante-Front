@@ -72,15 +72,17 @@ const SingleSauce = () => {
                         <div>By {sauce.manufacturer}</div>
                         <h3>Description</h3>
                         <div>{sauce.description}</div>
-                        <div>
+                        <h3>Piment principal</h3>
+                        <div>{sauce.mainPepper}</div>
+                        <div className="LikeDislike">
                             <LikeDislike id={id} />
                         </div>
-                        <div>
+                        <div className="SingleSauce__BTN">
                             <button className="btn" onClick={(e) => handleBack(e)}>
-                                BACK
+                                RETOUR A LA LISTE
                             </button>
                             {sauce.userId === user.userId ? (
-                                <div>
+                                <div className="modifyDelete">
                                     <button className="btn btn-modify" onClick={(e) => handleModify(e)}>
                                         MODIFY
                                     </button>

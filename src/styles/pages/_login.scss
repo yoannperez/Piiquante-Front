@@ -13,8 +13,12 @@
         // background-color:aquamarine;
         display: flex;
         flex-direction: column;
-        padding: 1em;
+        padding: 1em 0.1em;
         gap: 50px;
+        @include adaptive-sm {
+            max-width: 500px;
+            margin:0 auto;
+          }
     }
 
     .inputFlex {
@@ -30,6 +34,7 @@
             padding: 0.5em 1em;
             font-size: 24px;
             border-radius: 10px;
+            border: 2px solid black;
         }
 
         span {
@@ -41,11 +46,17 @@
     }
 
     input[type="submit"] {
-        background-color: rgb(0, 17, 255);
+        background-color: $orange-flame;
         padding: 0.5em 1em;
         font-size: 24px;
         border-radius: 10px;
         width: min-content;
         align-self: center;
+    }
+
+    .serverResponse {
+        margin-top: 1em;
+        color:red;
+        text-align: center;
     }
 }

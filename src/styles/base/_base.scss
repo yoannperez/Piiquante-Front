@@ -5,7 +5,6 @@ $color-2: #f7f7f7;
 $color-3: #282c34;
 $color-4: rgb(32, 35, 42);
 
-$orange-flame :#FFC600;
 
 
 * {
@@ -25,24 +24,24 @@ body {
  
   scrollbar-gutter: stable;
 
-  
+  background-color: #f7f7f7;
 
 
-  @include adaptive-sm {
-    background-color: rgb(204, 204, 204);
-  }
-  @include adaptive-md {
-    background-color: rgb(163, 163, 163);
-  }
-  @include adaptive-lg {
-    background-color: rgb(107, 107, 107);
-  }
-  @include adaptive-xl {
-    background-color: rgb(60, 60, 60);
-  }
-  @include adaptive-xxl {
-    background-color: rgb(0, 0, 0);
-  }
+  // @include adaptive-sm {
+  //   background-color: rgb(204, 204, 204);
+  // }
+  // @include adaptive-md {
+  //   background-color: rgb(163, 163, 163);
+  // }
+  // @include adaptive-lg {
+  //   background-color: rgb(107, 107, 107);
+  // }
+  // @include adaptive-xl {
+  //   background-color: rgb(60, 60, 60);
+  // }
+  // @include adaptive-xxl {
+  //   background-color: rgb(0, 0, 0);
+  // }
 }
 
 code {
