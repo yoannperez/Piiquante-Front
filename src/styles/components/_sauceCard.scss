@@ -6,8 +6,8 @@
     border-radius: 5px;
     align-items: center;
     overflow: hidden;
-    border: 1px solid $orange-flame;
-    padding: 1px;
+    border: 2px solid $orange-flame;
+    
     @include adaptive-sm {
         flex-direction: column;
         width: 150px;

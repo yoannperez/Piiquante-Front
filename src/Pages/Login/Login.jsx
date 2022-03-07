@@ -59,6 +59,8 @@ const Login = () => {
                     </div>
                 </div>
             )}
+
+            <p style={{textAlign: 'center'}}>Pour une visite rapide, utiliser : <br/> email : user@user.com<br/> Password : user</p>
         </div>
     );
 };

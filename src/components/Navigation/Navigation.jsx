@@ -25,7 +25,7 @@ const Navigation = () => {
         e.preventDefault();
         navigate("/");
     };
-    
+
     const handleAddSauce = (e) => {
         e.preventDefault();
         navigate("/add-sauce");
@@ -36,7 +36,9 @@ const Navigation = () => {
             <header>
                 <div className="navContainer">
                     <div className="navContainer__brand">
-                        <img src={flame} alt="piiquante-logo" />
+                        <Link to="/">
+                            <img src={flame} alt="piiquante-logo" />
+                        </Link>
                         <div className="navContainer__brand-name">
                             <h1> HOT TAKES </h1>
                             <h5>THE WEB'S BEST HOT SAUCE REVIEWS </h5>
@@ -45,18 +47,18 @@ const Navigation = () => {
                     {user ? (
                         <nav>
                             {location.pathname !== "/" ? <img src={grid} alt="" title="Retour à la liste" onClick={(e) => handleGrid(e)} /> : null}
-                            {location.pathname === "/" ? <img src={add} alt="" title="Ajouter une sauce" onClick={(e)=> handleAddSauce(e)}/> : null}
+                            {location.pathname === "/" ? <img src={add} alt="" title="Ajouter une sauce" onClick={(e) => handleAddSauce(e)} /> : null}
                             <img src={logout} alt="" title="Se déconnecter" onClick={(e) => handleClick(e)} />
                         </nav>
                     ) : (
                         <nav>
                             {location.pathname === "/register" ? (
                                 <Link to="/" title="Se connecter">
-                                     <img src={login} alt="" title="Se connecter"/>
+                                    <img src={login} alt="" title="Se connecter" />
                                 </Link>
                             ) : (
                                 <Link to="/register" title="S'enregistrer">
-                                    <img src={addUser} alt="" title="Créer un compte"/>
+                                    <img src={addUser} alt="" title="Créer un compte" />
                                 </Link>
                             )}
                         </nav>
