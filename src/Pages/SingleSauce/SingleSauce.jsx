@@ -2,7 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import React, { useEffect, useState, useContext } from "react";
 import { UserContext } from "../../utils/context/context";
 import LikeDislike from "./LikeDislike";
-import { deleteFetch} from "../../utils/fetchFunc";
+import { deleteFetch } from "../../utils/fetchFunc";
 
 const SingleSauce = () => {
     const { id } = useParams();
@@ -24,11 +24,16 @@ const SingleSauce = () => {
                     method: "GET",
                     headers: myHeaders,
                 });
-                const data = await response.json();
-                setSauce(data);
+                if (response.status === 401) {
+                    console.log("COUCOU");
+                    localStorage.removeItem("PiiquanteUser");
+                    navigate("/");
+                } else {
+                    const data = await response.json();
+                    setSauce(data);
+                }
             } catch (err) {
                 console.log(err);
-
                 // setError(true);
             } finally {
                 setSpinner(false);
@@ -44,7 +49,7 @@ const SingleSauce = () => {
     }
     function handleModify(e) {
         e.preventDefault();
-        navigate(`/edit-sauce/${id}`)
+        navigate(`/edit-sauce/${id}`);
     }
     async function handleDelete(e) {
         e.preventDefault();

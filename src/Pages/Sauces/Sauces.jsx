@@ -3,10 +3,12 @@ import { useContext } from "react";
 import { UserContext } from "../../utils/context/context";
 import SauceCard from "../../components/SauceCard/SauceCard";
 
+
 const Sauces = () => {
     const [data, setData] = useState([]);
     const { user } = useContext(UserContext);
     const [spinner, setSpinner] = useState(false);
+
 
     useEffect(() => {
         if (user) {
@@ -26,13 +28,15 @@ const Sauces = () => {
                         const resData = await res;
                         setData(await resData);
                         setSpinner(false);
+                    })
+                    .catch(function (err) {
+                        localStorage.removeItem("PiiquanteUser");
+                        window.location.reload();
                     });
             }
             getSauces();
         }
     }, []);
-
-    
 
     return (
         <>
